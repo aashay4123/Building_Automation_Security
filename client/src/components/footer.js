@@ -33,7 +33,7 @@ const Footer = () => {
         </li>
       </ul>
       <p className="copy">
-        This Webpage was created by Building Security and Automation .
+        This Webpage was created by Building Security and Automation.
       </p>
     </footer>
   );

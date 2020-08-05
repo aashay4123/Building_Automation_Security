@@ -1,17 +1,25 @@
-import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
-import Logo from "./images/logo-white.png";
+import React, { Fragment, useState } from "react";
+import { NavLink, Link as Lk } from "react-router-dom";
+import Logo from "../images/logo.png";
 import Nat3 from "./image/automation.jpg";
 import Nat2 from "./image/cctv.jpg";
 import Nat1 from "./image/voice-control.jpg";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
+import Footer from "../components/footer";
 
-export default function natour() {
+const Landing = () => {
+  let [isChecked, setIsChecked] = useState(false);
+  const toggleCheckbox = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <Fragment>
       <div className="navigation">
         <input
           type="checkbox"
+          checked={isChecked}
+          onChange={(event) => setIsChecked(event.currentTarget.checked)}
           className="navigation__checkbox"
           id="navi-toggle"
         />
@@ -19,13 +27,12 @@ export default function natour() {
         <label htmlFor="navi-toggle" className="navigation__button">
           <span className="navigation__icon">&nbsp;</span>
         </label>
-
         <div className="navigation__background">&nbsp;</div>
-
         <nav className="navigation__nav">
           <ul className="navigation__list">
             <li className="navigation__item">
               <Link
+                onClick={(e) => toggleCheckbox(e)}
                 className="navigation__link"
                 activeClass="active"
                 to="about"
@@ -34,11 +41,12 @@ export default function natour() {
                 offset={-70}
                 duration={700}
               >
-                <span className="navigation__link">About Us</span>
+                <span>About Us</span>
               </Link>
             </li>
             <li className="navigation__item">
               <Link
+                onClick={(e) => toggleCheckbox(e)}
                 className="navigation__link"
                 activeClass="active"
                 to="packages"
@@ -53,6 +61,7 @@ export default function natour() {
 
             <li className="navigation__item">
               <Link
+                onClick={(e) => toggleCheckbox(e)}
                 className="navigation__link"
                 activeClass="active"
                 to="contact"
@@ -66,17 +75,9 @@ export default function natour() {
             </li>
 
             <li className="navigation__item">
-              <Link
-                className="navigation__link"
-                activeClass="active"
-                to="login"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={700}
-              >
+              <Lk to="/signin">
                 <span>Log In</span>
-              </Link>
+              </Lk>
             </li>
           </ul>
         </nav>
@@ -106,7 +107,6 @@ export default function natour() {
           </Link>
         </div>
       </header>
-
       <main>
         <section className="section-about" id="about">
           <div className="u-center-text u-margin-bottom-big">
@@ -279,50 +279,6 @@ export default function natour() {
           </div>
         </section>
 
-        <section className="section-Login" id="login">
-          <div className="rownat">
-            <div className="book">
-              <div className="book__form">
-                <form action="#" className="form-land">
-                  <div className="u-margin-bottom-medium">
-                    <h2 className="heading-secondary">Login</h2>
-                  </div>
-
-                  <div className="form-land__group">
-                    <input
-                      type="email"
-                      className="form-land__input"
-                      placeholder="Email address"
-                      id="email"
-                      required
-                    />
-                    <label htmlFor="email" className="form-land__label">
-                      Email address
-                    </label>
-                  </div>
-
-                  <div className="form-land__group">
-                    <input
-                      type="password"
-                      className="form-land__input"
-                      placeholder="Password"
-                      id="password"
-                      required
-                    />
-                    <label htmlFor="password" className="form-land__label">
-                      Password
-                    </label>
-                  </div>
-
-                  <div className="form-land__group">
-                    <button className="btn btn--green">Submit &rarr;</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section className="section-book" id="contact">
           <div className="rownat">
             <div className="book">
@@ -395,63 +351,55 @@ export default function natour() {
           </div>
         </section>
       </main>
-      <footer className="footer-nat">
-        <div className="footer-nat__logo-box">
-          <picture className="footer-nat__logo">
-            <source
-              srcSet="./images/logo-green-small-1x.png 1x, ./images/logo-green-small-2x.png 2x"
-              media="(max-width: 37.5em)"
-            />
-            <img
-              srcSet="./images/logo-green-1x.png 1x, ./images/logo-green-2x.png 2x"
-              alt="Full logo"
-              src="./images/logo-green-2x.png"
-            />
-          </picture>
-        </div>
-        <div className="rownat">
-          <div className="col-1-of-2">
-            <div className="footer-nat__navigation">
-              <ul className="footer-nat__list">
-                <li className="footer-nat__item">
-                  <NavLink to="#" className="footer-nat__link">
-                    Company
-                  </NavLink>
-                </li>
-                <li className="footer-nat__item">
-                  <NavLink to="#" className="footer-nat__link">
-                    Contact us
-                  </NavLink>
-                </li>
-                <li className="footer-nat__item">
-                  <NavLink to="#" className="footer-nat__link">
-                    Carrers
-                  </NavLink>
-                </li>
-                <li className="footer-nat__item">
-                  <NavLink to="#" className="footer-nat__link">
-                    Privacy policy
-                  </NavLink>
-                </li>
-                <li className="footer-nat__item">
-                  <NavLink to="#" className="footer-nat__link">
-                    Terms
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-1-of-2">
-            <p className="footer-nat__copyright">
-              This page was created by{" "}
-              <NavLink to="#" className="footer-nat__link">
-                Aashay Phirke{" "}
-              </NavLink>
-              with reference to Advanced CSS SASS course of Jonas Schmedtmann.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </Fragment>
   );
+};
+export default Landing;
+
+// eslint-disable-next-line
+{
+  /* <section className="section-Login" id="login">
+            <div className="rownat">
+              <div className="book">
+                <div className="book__form">
+                  <form action="#" className="form-land">
+                    <div className="u-margin-bottom-medium">
+                      <h2 className="heading-secondary">Login</h2>
+                    </div>
+
+                    <div className="form-land__group">
+                      <input
+                        type="email"
+                        className="form-land__input"
+                        placeholder="Email address"
+                        id="email"
+                        required
+                      />
+                      <label htmlFor="email" className="form-land__label">
+                        Email address
+                      </label>
+                    </div>
+
+                    <div className="form-land__group">
+                      <input
+                        type="password"
+                        className="form-land__input"
+                        placeholder="Password"
+                        id="password"
+                        required
+                      />
+                      <label htmlFor="password" className="form-land__label">
+                        Password
+                      </label>
+                    </div>
+
+                    <div className="form-land__group">
+                      <button className="btn btn--green">Submit &rarr;</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section> */
 }

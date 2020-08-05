@@ -19,9 +19,6 @@ import addRemote from "./components/dashboard/remote/add_remote";
 import addRoom from "./components/dashboard/room/add_room";
 import editRoom from "./components/dashboard/room/edit_room";
 import Landing from "./landing/landing";
-/**TODO:
- * add landing page instead of MQTT
- */
 
 const Routes = () => {
   return (
