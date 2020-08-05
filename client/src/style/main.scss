@@ -1,0 +1,29 @@
+@import "./shared/colors";
+@import "./shared/mixins";
+@import "./shared/loading";
+
+/////landings
+
+@import "./landing/typography";
+@import "./landing/utilities";
+
+@import "./landing/card";
+@import "./landing/composition";
+@import "./landing/feature-box";
+@import "./landing/form";
+@import "./landing/story";
+@import "./landing/footer";
+@import "./landing/grid";
+@import "./landing/header";
+@import "./landing/navigation";
+@import "./landing/section";
+@import "./landing/button";
+
+@import "./dashboard/layout";
+@import "./dashboard/form";
+@import "./dashboard/equipments";
+@import "./dashboard/button";
+@import "./dashboard/sidebar";
+@import "./dashboard/header";
+@import "./layout/footer";
+@import "./layout/navigation";

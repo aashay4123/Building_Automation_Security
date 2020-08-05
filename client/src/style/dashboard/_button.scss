@@ -1,0 +1,129 @@
+.btnh {
+  margin: 1rem;
+}
+
+.nav__btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2;
+    position: relative;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(black, 0.3);
+
+    // &::after {
+    //   transform: scaleX(1.4) scaleY(1.6);
+    //   opacity: 0;
+    // }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(black, 0.3);
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+  &-sm {
+    margin-left: 0 !important;
+  }
+  &--red {
+    background-color: rgba(rgb(206, 13, 13), 0.93);
+    color: white;
+    &::after {
+      background-color: rgba(rgb(246, 0, 0), 0.93);
+    }
+    width: 75%;
+  }
+  &--grey {
+    background-color: grey;
+    color: white;
+    &::after {
+      background-color: grey;
+    }
+    width: 75%;
+  }
+  &--blue {
+    background-color: rgba(6, 6, 126, 0.849);
+    color: $color-white;
+    text-align: center;
+    width: 75%;
+
+    &::after {
+      background-color: rgb(6, 6, 126);
+    }
+  }
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+    text-align: center;
+    width: 75%;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+  &--nav {
+    background-color: $color-primary;
+    color: $color-white;
+    text-align: center;
+    &:hover {
+      box-shadow: 0 1rem 2rem rgba(black, 0.3);
+
+      &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+    }
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+  &--submit {
+    background-color: rgba($color: blue, $alpha: 0.86);
+    margin-top: 2.53em;
+    margin-left: 10em;
+    height: 3em;
+    width: 50%;
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+}

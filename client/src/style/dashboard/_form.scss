@@ -1,0 +1,36 @@
+.form {
+  // background-color: slateblue;
+  grid-column: center-start / full-end;
+  grid-row: 2;
+  margin: 8em auto 5em auto;
+  width: 50%;
+  height: 40%;
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+  &__label {
+    align-self: start;
+    font-size: 1.52em;
+  }
+  &__input {
+    font-size: 1.3em;
+    width: 100%;
+    &__valid {
+      border: 3px solid green;
+    }
+    &__invalid {
+      border: 3px solid red;
+    }
+  }
+  &__error {
+    color: red;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    height: 0.1em;
+  }
+}
