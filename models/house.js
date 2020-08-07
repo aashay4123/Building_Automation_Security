@@ -33,15 +33,19 @@ const houseSchema = new Schema({
         {
           name: {
             type: String,
+            required: true,
           },
           topic: {
             type: String,
+            required: true,
           },
           power: {
             type: Boolean,
+            default: false,
           },
           intensity: {
             type: Number,
+            default: 0,
           },
         },
       ],
@@ -49,14 +53,16 @@ const houseSchema = new Schema({
         {
           name: {
             type: String,
+            // required: true,
           },
           topic: {
             type: String,
+            // required: true,
           },
 
           company: {
             type: String,
-            required: true,
+            // required: true,
           },
         },
       ],

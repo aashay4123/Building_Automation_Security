@@ -81,6 +81,7 @@ export const createHouseSuccess = () => {
   };
 };
 export const createHouse = (houseData) => {
+  console.log("obviously not", houseData);
   return (dispatch) => {
     axios
       .post("/house", houseData)

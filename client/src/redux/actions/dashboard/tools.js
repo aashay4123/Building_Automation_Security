@@ -1,12 +1,13 @@
 import * as actionTypes from "../actionTypes";
 import { axiosInstanceAuth as axios } from "../../../utility";
-
+import { getHouse } from "./house";
 export const setButtonState = (buttonState, equipId, roomId) => {
   return (dispatch) => {
     axios
       .patch(`/room/equipment/${roomId}/${equipId}`, buttonState)
       .then((response) => {
         dispatch(setButtonSuccess(response));
+        dispatch(getHouse());
       })
       .catch((error) => {
         dispatch(setButtonFailed(error.response.data.error));

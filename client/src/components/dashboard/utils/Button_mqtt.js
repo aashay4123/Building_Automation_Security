@@ -8,18 +8,31 @@ class Button extends Component {
       loading: false,
     };
   }
-
+  componentDidMount() {
+    const { equipment } = this.props;
+    console.log(equipment);
+    this.setState({
+      buttonState: equipment.power,
+    });
+  }
   updateButtonState() {
     const { buttonState } = this.state;
-    const { mqtt, equipmentId, roomId, onSetButtonState } = this.props;
+    const {
+      mqtt,
+      equipmentId,
+      roomId,
+      onSetButtonState,
+      equipment,
+    } = this.props;
 
     this.setState({
       buttonState: !buttonState,
-    });
-    this.setState({
       loading: true,
     });
     const buttonData = {
+      name: equipment.name,
+      topic: equipment.topic,
+      intensity: equipment.intensity,
       power: buttonState,
     };
     onSetButtonState(buttonData, equipmentId, roomId);
@@ -32,11 +45,12 @@ class Button extends Component {
   }
 
   render() {
-    const { buttonState, loading } = this.state;
+    const { loading } = this.state;
+    const { equipment } = this.props;
 
     let buttonText, buttonClass;
     if (!loading) {
-      if (buttonState) {
+      if (!equipment.power) {
         buttonText = "ON";
         buttonClass = "green";
       } else {

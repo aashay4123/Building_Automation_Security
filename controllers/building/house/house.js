@@ -42,6 +42,7 @@ exports.getHouse = (req, res) => {
 // @desc    Add house in ref to user
 // @access  Private
 exports.createHouse = (req, res) => {
+  console.log("create house");
   const house = {};
   house.user_id = req.user._id;
   if (req.body.name) house.name = req.body.name;

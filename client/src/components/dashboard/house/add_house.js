@@ -5,15 +5,15 @@ import * as actions from "../../../redux/actions";
 import withAuth from "../../hoc/withAuth";
 import { connect } from "react-redux";
 
-const INITIAL_VALUES = {
-  name: "",
-  flat_no: "",
-  floor: "",
-  address: "",
-};
-
 const Addhouse = (props) => {
+  const INITIAL_VALUES = {
+    name: "",
+    flat: "",
+    floor: "",
+    address: "",
+  };
   const saveHouse = (houseData, actions) => {
+    console.log("something?");
     actions.setSubmitting(false);
     props.onCreateHouse(houseData);
     actions.setSubmitting(true);
@@ -32,11 +32,6 @@ const Addhouse = (props) => {
     </Layout>
   );
 };
-const mapStateToProps = (state) => {
-  return {
-    name: state.dash.name,
-  };
-};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -45,9 +40,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(withAuth("subscriber")(Addhouse));
-
-// import * as actions from "../../../redux/actions";
-// import { connect } from "react-redux";

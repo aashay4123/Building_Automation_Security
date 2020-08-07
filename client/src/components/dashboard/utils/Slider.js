@@ -7,20 +7,35 @@ class Slider extends Component {
       rangeVal: 0,
     };
   }
+  componentDidMount() {
+    const { equipment } = this.props;
+    console.log(equipment);
+    this.setState({
+      rangeVal: equipment.intensity,
+    });
+  }
   updateRange(e) {
-    const { mqtt, equipmentId, roomId, onSetIntensityState } = this.props;
+    const {
+      mqtt,
+      equipmentId,
+      roomId,
+      onSetIntensityState,
+      equipment,
+    } = this.props;
     const value = e.target.value;
     this.setState({
       rangeVal: value,
     });
 
     const intensityData = {
+      name: equipment.name,
+      topic: equipment.topic,
+      power: equipment.power,
       intensity: parseInt(value),
     };
-
+    console.log(intensityData);
     onSetIntensityState(intensityData, equipmentId, roomId);
     mqtt.publish("@near/demo", value.toString());
-    console.log("mqtt slider", value.toString());
   }
 
   render() {

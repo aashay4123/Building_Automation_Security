@@ -4,6 +4,7 @@ import CreateFormRoom from "./createForm_room";
 import withAuth from "../../hoc/withAuth";
 import * as actions from "../../../redux/actions";
 import { connect } from "react-redux";
+
 const AddRoom = (props) => {
   const INITIAL_VALUES = {
     name: "",

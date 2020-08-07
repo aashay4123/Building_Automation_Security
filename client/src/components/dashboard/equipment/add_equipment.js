@@ -7,9 +7,9 @@ import { connect } from "react-redux";
 
 const AddEquipment = (props) => {
   const INITIAL_VALUES = {
-    power: "",
+    // power: "",
     name: "",
-    intensity: "",
+    // intensity: "",
     topic: "",
   };
   const { roomId } = props.match.params;

@@ -31,7 +31,7 @@ const CreateForm_equipment = ({ initialValues, onSubmit, buttonText }) => {
               name="topic"
               component={PortInput}
             />
-            <Field
+            {/* <Field
               label="power"
               type="text"
               name="power"
@@ -42,7 +42,7 @@ const CreateForm_equipment = ({ initialValues, onSubmit, buttonText }) => {
               type="text"
               name="intensity"
               component={PortInput}
-            />
+            /> */}
             <button
               type="submit"
               disabled={isSubmitting}
