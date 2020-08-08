@@ -6,6 +6,14 @@
   grid-gap: 6em;
   align-items: start;
   margin-top: 1.5em;
+  // background-color: #b1b9cc;
+  background-image: linear-gradient(
+    to bottom,
+    rgba($color-sidebar, 0.9),
+    rgba($color-footer, 0.9)
+  );
+  background-size: cover;
+
   &__buttonbox {
     height: 75%;
     width: 95%;

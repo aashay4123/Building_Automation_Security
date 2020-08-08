@@ -1,10 +1,9 @@
 .dashfeatures {
   @extend %fontsize;
   display: grid;
-
+  // background-color: rgba(#eea001, 0.8);
   grid-column: center-start / center-end;
   grid-row: 2;
-  // margin: 3.5em 1em;
   padding-top: 7em;
   padding-left: 3em;
   grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr)); //responsive
@@ -13,27 +12,27 @@
   align-items: start;
 }
 .dashcard {
-  background-color: $color-grey-light-1;
+  // background-color: $color-grey-light-1;
+  background-color: white;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 1.5em;
   margin-top: 5em;
+  padding-bottom: 2em;
+  box-shadow: 0 1rem 2rem rgba(black, 0.3);
 
   &__name {
     grid-row: 1/ 2;
     grid-column: 1/ -1;
     font-family: $font-display;
     text-align: center;
-    padding: 1.25em;
+    padding: 0.8em;
     color: #fff;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.3em;
     width: 80%;
-    height: 2.4em;
-    justify-self: center;
-    align-self: end;
-    // transform: translateY(8.5%);
-    z-index: 5;
+    height: 3em;
   }
 
   &__location,
@@ -44,7 +43,7 @@
     font-size: 1.5em;
     align-items: center;
     svg {
-      fill: $color-primary-hotel;
+      fill: $color-primary-dark;
       height: 2em;
       width: 2em;
       margin-right: 0.5em;
@@ -68,7 +67,7 @@
   }
   &__heading {
     text-align: center;
-    background-color: $color-secondary;
+    background-color: $color-primary-dark;
 
     grid-row: 1/ 2;
     grid-column: 1/ -1;
@@ -82,20 +81,24 @@
   &__head {
     font-size: 2.63em;
     text-transform: uppercase;
-    grid-column: 1 / -1;
+    grid-column: full-start / -1;
     padding-top: 2rem;
+    text-align: center;
     grid-row: 1;
-    margin: auto;
-    color: $color-primary-hotel;
+    height: 2.1em;
+    color: $color-primary-dark;
+    // background-color: $color-header;
+    background-image: linear-gradient(
+      to bottom,
+      rgba($color-header, 0.9),
+      rgba($color-sidebar, 0.9)
+    );
   }
   &__button {
-    position: relative;
-    top: 0.31em;
-    right: 0.61em;
     width: 3.4em;
     height: 3.4em;
     border: none;
-    background-color: #101d2c;
+    background-color: $color-primary-dark;
     &:active,
     &:focus {
       outline: none;
@@ -114,21 +117,6 @@
   padding: 3px 7px;
   margin: 0px 10px;
   text-align: center;
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    left: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 0;
-    width: 0;
-    border: solid 6px rgba($color: #2709d3, $alpha: 0.91);
-    z-index: -1;
-    border-top-color: white;
-    border-bottom-color: white;
-    border-left-color: white;
-  }
 }
 .range {
   -webkit-appearance: none;

@@ -1,7 +1,11 @@
 .dashsidebar {
   @extend %fontsize;
 
-  background-color: $color-primary-hotel;
+  background-image: linear-gradient(
+    to bottom,
+    rgba($color-header, 0.9),
+    rgba($color-sidebar, 0.9)
+  );
   grid-column: sidebar-start/sidebar-end;
   grid-row: 1/-1;
   display: flex;
@@ -18,7 +22,8 @@
   // }
   &__name {
     border: none;
-    background-color: $color-primary-hotel;
+    background-color: $color-header;
+    color: white;
     &:active,
     &:focus {
       outline: none;
@@ -31,7 +36,7 @@
 
   &__items {
     font-size: large;
-    background-color: $color-primary-hotel;
+    background-color: $color-header;
     border: none;
 
     margin-top: 1em;
@@ -41,8 +46,8 @@
   // }
 }
 .dropdown {
-  background: rgba($color: $color-primary-hotel, $alpha: 0.361);
-  border: 1px solid $color-primary-hotel;
+  background: rgba($color: $color-header, $alpha: 0.361);
+  border: 1px solid $color-header;
   border-radius: 1px;
 
   &__list {
@@ -68,14 +73,16 @@
     border-bottom: 1px solid #000;
 
     &--active {
-      background: $color-primary-hotel;
+      background: $color-header;
     }
   }
 
   &__toggle {
     border: none;
-    background: $color-primary-hotel;
+    font-size: 1.5em;
+    background: $color-header;
     margin-left: 0.6em;
+    color: white;
     &:active,
     &:focus {
       outline: none;
@@ -83,20 +90,23 @@
   }
   &__title {
     width: 100%;
+    color: $color-footer;
   }
   &__button {
-    background: $color-primary-hotel;
+    background: $color-header;
     border: none;
-    position: fixed;
+    // position: relative;
+    width: 3em;
+    height: 2em;
     &:active,
     &:focus {
       outline: none;
     }
     &-1 {
-      left: 10em;
+      margin-left: 1.61em;
     }
     &-2 {
-      left: 8em;
+      margin-right: 0.61em;
     }
     &-box {
       display: flex;
@@ -105,6 +115,7 @@
 }
 .center {
   text-align: center;
-  font-size: 2.63em;
+  font-size: 2.3em;
   padding-top: 0.25em;
+  color: $color-footer;
 }

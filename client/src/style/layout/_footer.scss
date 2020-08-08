@@ -1,7 +1,7 @@
 .footerhot {
   @extend %fontsize;
 
-  background-color: $color-secondary;
+  background-color: $color-footer;
 
   grid-column: sidebar-start/ full-end;
   grid-row: -1;

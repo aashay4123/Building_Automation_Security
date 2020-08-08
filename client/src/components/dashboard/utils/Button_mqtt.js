@@ -3,18 +3,13 @@ import React, { Component } from "react";
 class Button extends Component {
   constructor(props) {
     super(props);
+    const { equipment } = this.props;
+
     this.state = {
-      buttonState: false,
-      loading: false,
+      buttonState: equipment.power,
     };
   }
-  componentDidMount() {
-    const { equipment } = this.props;
-    console.log(equipment);
-    this.setState({
-      buttonState: equipment.power,
-    });
-  }
+
   updateButtonState() {
     const { buttonState } = this.state;
     const {
@@ -27,7 +22,6 @@ class Button extends Component {
 
     this.setState({
       buttonState: !buttonState,
-      loading: true,
     });
     const buttonData = {
       name: equipment.name,
@@ -39,34 +33,25 @@ class Button extends Component {
     mqtt.publish("@near/demo", buttonState.toString());
 
     console.log("mqtt button", buttonState.toString());
-    this.setState({
-      loading: false,
-    });
   }
 
   render() {
-    const { loading } = this.state;
     const { equipment } = this.props;
-
     let buttonText, buttonClass;
-    if (!loading) {
-      if (!equipment.power) {
-        buttonText = "ON";
-        buttonClass = "green";
-      } else {
-        buttonText = "OFF";
-        buttonClass = "red";
-      }
+    if (!equipment.power) {
+      buttonText = "ON";
+      buttonClass = "green";
     } else {
       buttonText = "OFF";
-      buttonClass = "grey";
+      buttonClass = "red";
     }
+    // buttonText = "OFF";
+    // buttonClass = "grey";
 
     return (
       <button
         className={`dashcard__btnh nav__btn nav__btn--${buttonClass}`}
         onClick={() => this.updateButtonState()}
-        disabled={loading}
       >
         {buttonText}
       </button>

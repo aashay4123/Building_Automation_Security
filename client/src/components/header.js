@@ -5,9 +5,9 @@ import Logo from "./../images/logo.png";
 const Header = ({ match, history }) => {
   const isActive = (path) => {
     if (match.path === path) {
-      return { color: "#000" };
+      return { color: "#eaa001", textDecoration: "none" };
     } else {
-      return { color: "#fff" };
+      return { color: "#3f435e", textDecoration: "none" };
     }
   };
   return (
@@ -15,9 +15,6 @@ const Header = ({ match, history }) => {
       <header className="header">
         <nav className="user-nav">
           <div className="user-nav__first">
-            {/* <svg className="user-nav__notification-svg">
-              <use xlinkHref="../images/sprite.svg#icon-bell"></use>
-            </svg> */}
             <li className="user-nav__user-head ">
               <Link
                 to="/"
@@ -77,7 +74,6 @@ const Header = ({ match, history }) => {
               <li className="">
                 <span
                   className=" user-nav__user-head-link"
-                  style={{ cursor: "pointer", color: "#fff" }}
                   onClick={() => {
                     signout(() => {
                       history.push("/");
@@ -123,7 +119,6 @@ const Header = ({ match, history }) => {
               <li className=" user-nav__user-head-link">
                 <span
                   className=""
-                  style={{ cursor: "pointer", color: "#fff" }}
                   onClick={() => {
                     signout(() => {
                       history.push("/");

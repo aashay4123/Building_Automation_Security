@@ -7,7 +7,7 @@ const Layout = ({ children, match, history }) => {
   return (
     <Fragment>
       <Header match={match} history={history} />
-      <div className="container">{children}</div>
+      <div className="authcontainer">{children}</div>
       <Footer />
     </Fragment>
   );

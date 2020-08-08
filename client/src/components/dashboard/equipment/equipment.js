@@ -59,6 +59,7 @@ const Equipment = (props) => {
   }
   return (
     <Layout header="Equipment">
+      {/* <h4 className="dashcard__head">Equipment</h4> */}
       <Button roomId={roomId} history={props.history} />
       <section className="dashfeatures">{equipmentDetails}</section>
     </Layout>

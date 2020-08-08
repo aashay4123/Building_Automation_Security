@@ -10,29 +10,6 @@
   }
 }
 
-// .section-features {
-//   @extend %fontsize;
-
-//   padding: 20em 0;
-//   background-image: linear-gradient(
-//       to right bottom,
-//       rgba($color-primary-light, 0.8),
-//       rgba($color-primary-dark, 0.8)
-//     ),
-//     url(../../landing/images/nat-4.jpg);
-//   background-size: cover;
-//   transform: skewY(-7deg);
-//   margin-top: -10em;
-
-//   & > * {
-//     transform: skewY(7deg);
-//   }
-
-//   @include respond(tab-port) {
-//     padding: 10em 0;
-//   }
-// }
-
 .section-tours {
   @extend %fontsize;
 

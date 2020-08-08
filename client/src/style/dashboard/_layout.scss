@@ -1,6 +1,24 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html,
+body {
+  // font-size: 62.5%;
+  box-sizing: border-box;
+
+  font-family: "Helvetica";
+  font-weight: 300;
+  line-height: 1.6;
+}
+
 .dashcontainer {
   display: grid;
-  grid-template-rows: 10vh minmax(min-content, 63vh) auto;
+  grid-template-rows: 10vh minmax(69vh, min-content) auto;
   grid-template-columns:
     [sidebar-start] 15vw [sidebar-end full-start center-start] repeat(
       8,
@@ -8,18 +26,26 @@
     )
     [center-end] minmax(4em, 1fr) [full-end];
 
-  // @media only screen and (max-width: $bp-large) {
-  //   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
-  //   grid-template-columns:
-  //     [full-start] minmax(6em, 1fr) [center-start]
-  //     repeat(8, [col-start] minmax(min-content, 14em) [col-end])
-  //     [center-end] minmax(6em, 1fr) [full-end];
-  // }
+  // background-image: linear-gradient(
+  //     to bottom,
+  //     rgba($color-header, 0.9),
+  //     rgba($color-footer, 0.9)
+  //   ),
+  //   url("../../images/background.jpeg");
+  // background-size: cover;
 
-  // @media only screen and (max-width: $bp-medium) {
-  //   // grid-template-rows: 3em;
-  //   grid-template-columns:
-  //     [sidebar-start] 8em [sidebar-end ]
-  //     repeat(2, [full-start] minmax(min-content, 14em) [full-end]);
-  // }
+  @media only screen and (max-width: $bp-large) {
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns:
+      [full-start] minmax(6em, 1fr) [center-start]
+      repeat(8, [col-start] minmax(min-content, 14em) [col-end])
+      [center-end] minmax(6em, 1fr) [full-end];
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    // grid-template-rows: 3em;
+    grid-template-columns:
+      [sidebar-start] 8em [sidebar-end ]
+      repeat(2, [full-start] minmax(min-content, 14em) [full-end]);
+  }
 }
