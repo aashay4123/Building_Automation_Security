@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
-import Header from "../../header";
-import Footer from "../../footer";
+import Header from "../../../container/layout/header";
+import Footer from "../../../container/layout/footer";
 import { Connector } from "mqtt-react";
 import Button from "./add_button";
 import Room from "../room/room";

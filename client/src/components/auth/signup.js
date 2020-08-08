@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import Layout from "../../container/layout";
+import Layout from "../../container/layout/layout";
 import { isAuth } from "../helper";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions";

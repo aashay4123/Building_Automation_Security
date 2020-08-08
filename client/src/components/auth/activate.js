@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Layout from "../../container/layout";
+import Layout from "../../container/layout/layout";
 import { connect } from "react-redux";
 import jwt from "jsonwebtoken";
 import * as actions from "../../redux/actions";

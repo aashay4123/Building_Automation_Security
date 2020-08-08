@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../../container/layout";
+import Layout from "../../container/layout/layout";
 import jwt from "jsonwebtoken";
 import "react-toastify/dist/ReactToastify.min.css";
 import { connect } from "react-redux";

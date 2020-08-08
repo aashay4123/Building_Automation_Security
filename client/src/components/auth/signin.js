@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import Layout from "../../container/layout";
+import Layout from "../../container/layout/layout";
 import Google from "./google";
 import { authenticate, isAuth } from "../helper";
 import { toast } from "react-toastify";

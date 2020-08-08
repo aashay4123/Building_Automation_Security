@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { isAuth, signout } from "./helper";
-import Logo from "./../images/logo.png";
+import { isAuth, signout } from "../../components/helper";
+import Logo from "../../images/logo.png";
 const Header = ({ match, history }) => {
   const isActive = (path) => {
     if (match.path === path) {

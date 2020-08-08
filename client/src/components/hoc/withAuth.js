@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../container/layout";
+import Layout from "../../container/layout/layout";
 import { isAuth } from "../helper";
 
 export default (role) => (Component) =>

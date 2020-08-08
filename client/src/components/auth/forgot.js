@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../../container/layout";
+import Layout from "../../container/layout/layout";
 import "react-toastify/dist/ReactToastify.min.css";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions";
@@ -10,17 +10,14 @@ const Forgot = (props) => {
     buttonText: "Request Password Reset Link",
   });
   const { email, buttonText } = values;
-
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
-
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, buttonText: "Requesting password" });
     props.onforgot(email);
   };
-
   const passwordForgotForm = () => (
     <form>
       <div className="form-group">

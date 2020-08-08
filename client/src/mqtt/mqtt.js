@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Connector } from "mqtt-react";
-import Layout from "../container/layout";
+import Layout from "../container/layout/layout";
 
-import _MessageContainer from "../mqtt/MessageContainer.js";
+import _MessageContainer from "./MessageContainer.js";
 import { subscribe } from "mqtt-react";
 
 const MessageContainer = subscribe({ topic: "@near/demo" })(_MessageContainer);

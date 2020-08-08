@@ -5,7 +5,8 @@ import Nat3 from "./image/automation.jpg";
 import Nat2 from "./image/cctv.jpg";
 import Nat1 from "./image/voice-control.jpg";
 import { Link } from "react-scroll";
-import Footer from "../components/footer";
+import Footer from "../container/layout/footer";
+import { isAuth } from "../components/helper";
 
 const Landing = () => {
   let [isChecked, setIsChecked] = useState(false);
@@ -58,7 +59,6 @@ const Landing = () => {
                 <span>Our Packages</span>
               </Link>
             </li>
-
             <li className="navigation__item">
               <Link
                 onClick={(e) => toggleCheckbox(e)}
@@ -73,12 +73,20 @@ const Landing = () => {
                 <span>Contact Us</span>
               </Link>
             </li>
-
-            <li className="navigation__item">
-              <Lk to="/signin">
-                <span>Log In</span>
-              </Lk>
-            </li>
+            {isAuth() && isAuth().role === "subscriber" && (
+              <li className="navigation__item">
+                <Lk to="/house">
+                  <span>Dashboard</span>
+                </Lk>
+              </li>
+            )}
+            {!isAuth() && (
+              <li className="navigation__item">
+                <Lk to="/signin">
+                  <span>Log In</span>
+                </Lk>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
