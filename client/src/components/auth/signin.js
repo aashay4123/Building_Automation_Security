@@ -25,9 +25,7 @@ const Signin = (props) => {
         buttonText: "submitted",
       });
       toast.success(`hey ${response.data.user.name} welcome back!!`);
-      isAuth() && isAuth().role === "admin"
-        ? props.history.push("/admin")
-        : props.history.push("/private");
+      props.history.push("/profile");
     });
   };
   const handleChange = (name) => (event) => {
@@ -41,29 +39,42 @@ const Signin = (props) => {
   };
 
   const signinForm = () => (
-    <form>
-      <div className="form-group">
-        <label className="text-muted">email</label>
-        <input
-          onChange={handleChange("email")}
-          type="text"
-          value={email}
-          className="form-control"
-        />
+    <form className="form-dash">
+      <div className="btn--flex">
+        <Google informParent={informParent} />
+        <Facebook informParent={informParent} />
       </div>
       <div className="form-group">
-        <label className="text-muted">password</label>
-        <input
-          onChange={handleChange("password")}
-          type="password"
-          value={password}
-          className="form-control"
-        />
+        <div className="form-land__group">
+          <input
+            onChange={handleChange("email")}
+            value={email}
+            type="text"
+            className="form-land__input"
+            placeholder="Email Id"
+          />
+        </div>
+        <div className="form-land__group">
+          <input
+            onChange={handleChange("password")}
+            value={password}
+            type="password"
+            className="form-land__input"
+            placeholder="password"
+          />
+        </div>
       </div>
       <div>
-        <button className="btn btn-primary" onClick={clickSubmit}>
+        <button className="btn btn--blue btn--pad" onClick={clickSubmit}>
           {buttonText}
         </button>
+        <br />
+        <Link to="/auth/password/forgot" className="btn btn--red">
+          Forgot Password
+        </Link>
+        <Link to="/signup" className="btn btn--green">
+          Create Account
+        </Link>
       </div>
     </form>
   );
@@ -71,17 +82,8 @@ const Signin = (props) => {
     <Layout>
       <div className="col-md-6 offset-med-3">
         {isAuth() ? <Redirect to="/" /> : null}
-        <h1 className="p-5 text-center">Signin</h1>
-        <Google informParent={informParent} />
-        <Facebook informParent={informParent} />
+        <h1 className="heading-1">Signin</h1>
         {signinForm()}
-        <br />
-        <Link
-          to="/auth/password/forgot"
-          className="btn btn-sm btn-outline-danger"
-        >
-          Forgot Password
-        </Link>
       </div>
     </Layout>
   );

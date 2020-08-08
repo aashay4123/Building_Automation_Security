@@ -8,9 +8,9 @@ const PortInput = ({
   ...props
 }) => {
   return (
-    <div className="form__item">
-      <label className="form__label">{label}</label>
-      <input className="form__input" type={type} {...field} {...props} />
+    <div className="form-land__group">
+      <label className="form-land__label">{label}</label>
+      <input className="form-land__input" type={type} {...field} {...props} />
       {touched[field.name] && errors[field.name] && (
         <div className="form__error">{errors[field.name]}</div>
       )}

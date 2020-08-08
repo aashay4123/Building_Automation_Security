@@ -73,7 +73,7 @@ const Landing = () => {
                 <span>Contact Us</span>
               </Link>
             </li>
-            {isAuth() && isAuth().role === "subscriber" && (
+            {isAuth() && (
               <li className="navigation__item">
                 <Lk to="/house">
                   <span>Dashboard</span>

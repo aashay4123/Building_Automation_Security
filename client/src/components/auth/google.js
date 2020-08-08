@@ -13,8 +13,7 @@ const Google = ({ informParent = (f) => f }) => {
       .then((response) => {
         informParent(response);
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
   return (
     <div className="pb-3">
@@ -27,7 +26,7 @@ const Google = ({ informParent = (f) => f }) => {
           <button
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
-            className="btn btn-success btn-lg btn-block"
+            className="btn btn--green "
           >
             <i className="fab fa-google pr-2"></i> Login with Google
           </button>

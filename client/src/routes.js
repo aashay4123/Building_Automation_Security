@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Private from "./container/private";
-import Admin from "./container/admin";
+import Profile from "./container/profile";
 import Signup from "./components/auth/signup";
 import Signin from "./components/auth/signin";
 import activate from "./components/auth/activate";
@@ -23,8 +22,7 @@ import Landing from "./landing/landing";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/private" exact component={Private} />
-      <Route path="/admin" exact component={Admin} />
+      <Route path="/profile" exact component={Profile} />
       <Route path="/" exact component={Landing} />
       <Route path="/signup" exact component={Signup} />
       <Route path="/signin" exact component={Signin} />

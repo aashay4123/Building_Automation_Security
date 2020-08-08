@@ -25,36 +25,40 @@ const Signup = (props) => {
   };
 
   const signupForm = () => (
-    <form>
-      <div className="form-group">
-        <label className="text-muted">Name</label>
+    <form className="form-dash">
+      <div className="form-land__group">
         <input
           onChange={handleChange("name")}
-          type="text"
           value={name}
-          className="form-control"
+          type="text"
+          className="form-land__input"
+          placeholder="Full name"
+          id="name"
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">email</label>
+
+      <div className="form-land__group">
         <input
           onChange={handleChange("email")}
           type="text"
+          className="form-land__input"
+          placeholder="Email Id"
           value={email}
-          className="form-control"
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">password</label>
+
+      <div className="form-land__group">
         <input
           onChange={handleChange("password")}
-          type="password"
           value={password}
-          className="form-control"
+          type="password"
+          className="form-land__input"
+          placeholder="password"
         />
       </div>
+
       <div>
-        <button className="btn btn-primary" onClick={clickSubmit}>
+        <button className="btn btn--blue btn--pad" onClick={clickSubmit}>
           {buttonText}
         </button>
       </div>
@@ -64,7 +68,7 @@ const Signup = (props) => {
     <Layout>
       <div className="col-md-6 offset-med-3">
         {isAuth() ? <Redirect to="/" /> : null}
-        <h1 className="p-5 text-center">Signup</h1>
+        <h1 className="heading-1">Signup</h1>
         {signupForm()}
       </div>
     </Layout>

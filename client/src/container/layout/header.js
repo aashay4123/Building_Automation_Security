@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { isAuth, signout } from "../../components/helper";
 import Logo from "../../images/logo.png";
+
 const Header = ({ match, history }) => {
   const isActive = (path) => {
     if (match.path === path) {
@@ -25,7 +26,6 @@ const Header = ({ match, history }) => {
               </Link>
             </li>
           </div>
-
           {!isAuth() && (
             <div className="user-nav__last">
               <li className=" user-nav__user-head-link">
@@ -66,7 +66,7 @@ const Header = ({ match, history }) => {
                   className="user-nav__user-photo"
                 ></img>
                 <li className="user-nav__user-head-link">
-                  <Link to="/admin" className="" style={isActive("/admin")}>
+                  <Link to="/profile" className="" style={isActive("/profile")}>
                     {isAuth().name}
                   </Link>
                 </li>
@@ -111,7 +111,7 @@ const Header = ({ match, history }) => {
                   className="user-nav__user-photo"
                 />
                 <li className="user-nav__user-head-link">
-                  <Link to="/private" className="" style={isActive("/private")}>
+                  <Link to="/profile" className="" style={isActive("/profile")}>
                     {isAuth().name}
                   </Link>
                 </li>

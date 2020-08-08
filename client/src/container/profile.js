@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../container/layout/layout";
+import Layout from "./layout/layout";
 import axios from "axios";
 import { isAuth, getcookie, signout, updateUser } from "../components/helper";
 import { ToastContainer, toast } from "react-toastify";
@@ -64,7 +64,7 @@ const Private = ({ history }) => {
     })
       .then((response) => {
         updateUser(response, () => {
-          setValues({ ...values, buttonText: "Submitted" });
+          setValues({ ...values, buttonText: "Submit again" });
           toast.success("Profile updated successfully");
         });
       })
@@ -75,48 +75,49 @@ const Private = ({ history }) => {
   };
 
   const updateForm = () => (
-    <form>
-      <div className="form-group">
-        <label className="text-muted">Role</label>
+    <form className="form-dash">
+      <div className="form-land__group">
         <input
           defaultValue={role}
           type="text"
-          className="form-control"
+          className="form-land__input"
+          placeholder="Role"
           disabled
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">Name</label>
+      <div className="form-land__group">
         <input
           onChange={handleChange("name")}
           value={name}
           type="text"
-          className="form-control"
+          className="form-land__input"
+          placeholder="Full name"
+          id="name"
         />
       </div>
 
-      <div className="form-group">
-        <label className="text-muted">Email</label>
+      <div className="form-land__group">
         <input
           defaultValue={email}
-          type="email"
-          className="form-control"
+          type="text"
+          className="form-land__input"
+          placeholder="Email Id"
           disabled
         />
       </div>
 
-      <div className="form-group">
-        <label className="text-muted">Password</label>
+      <div className="form-land__group">
         <input
           onChange={handleChange("password")}
           value={password}
-          type="password"
-          className="form-control"
+          type="text"
+          className="form-land__input"
+          placeholder="password"
         />
       </div>
 
       <div>
-        <button className="btn btn-primary" onClick={clickSubmit}>
+        <button className="btn btn--blue btn--pad" onClick={clickSubmit}>
           {buttonText}
         </button>
       </div>
@@ -127,8 +128,7 @@ const Private = ({ history }) => {
     <Layout>
       <div className="col-md-6 offset-md-3">
         <ToastContainer />
-        <h1 className="pt-5 text-center">Private</h1>
-        <p className="lead text-center">Profile update</p>
+        <h1 className="heading-1">Profile</h1>
         {updateForm()}
       </div>
     </Layout>

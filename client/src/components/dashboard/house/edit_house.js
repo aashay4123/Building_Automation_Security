@@ -42,12 +42,12 @@ const Edit_house = (props) => {
         onSubmit={updateHouse}
         buttonText="Edit"
       />
-      <button className="nav__btn nav__btn--green" onClick={createHouse}>
+      {/* <button className="nav__btn nav__btn--green" onClick={createHouse}>
         create House
       </button>
       <button className="nav__btn nav__btn--red" onClick={deleteWarning}>
-        delete House
-      </button>
+        delete House  
+      </button> */}
     </Layout>
   );
 };

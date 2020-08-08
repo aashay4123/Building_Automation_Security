@@ -23,8 +23,8 @@ const Activate = (props) => {
 
   const activationLink = () => (
     <div className="text-center">
-      <h1 className="p-5">Hey {name}, Ready to activate your account?</h1>
-      <button className="btn btn-outline-primary" onClick={clickSubmit}>
+      <h1 className="heading-2">Hey {name}, Ready to activate your account?</h1>
+      <button className="btn btn--green " onClick={clickSubmit}>
         Activate Account
       </button>
     </div>

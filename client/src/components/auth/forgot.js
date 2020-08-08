@@ -19,19 +19,19 @@ const Forgot = (props) => {
     props.onforgot(email);
   };
   const passwordForgotForm = () => (
-    <form>
-      <div className="form-group">
-        <label className="text-muted">email</label>
+    <form className="form-dash">
+      <div className="form-land__group">
         <input
           onChange={handleChange("email")}
-          type="text"
           value={email}
-          className="form-control"
+          type="text"
+          className="form-land__input"
+          placeholder="Email Id"
         />
       </div>
 
       <div>
-        <button className="btn btn-primary" onClick={clickSubmit}>
+        <button className="btn btn--blue" onClick={clickSubmit}>
           {buttonText}
         </button>
       </div>

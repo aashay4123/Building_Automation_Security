@@ -31,23 +31,21 @@ const Reset = (props) => {
     setValues({ ...values, buttonText: "Reseting password" });
     props.onReset(newPassword, token);
   };
+  // console.log(jwt.decode(token));
 
   const ResetPasswordForm = () => (
-    <form>
-      <div className="form-group">
-        <label className="text-muted">New Password</label>
+    <form className="form-dash">
+      <div className="form-land__group">
         <input
           onChange={handleChange}
-          type="password"
           value={newPassword}
-          className="form-control"
+          type="password"
+          className="form-land__input"
           placeholder="Type new password"
-          required
         />
       </div>
-
       <div>
-        <button className="btn btn-primary" onClick={clickSubmit}>
+        <button className="btn btn--blue" onClick={clickSubmit}>
           {buttonText}
         </button>
       </div>
@@ -57,7 +55,7 @@ const Reset = (props) => {
   return (
     <Layout>
       <div className="col-md-6 offset-med-3">
-        <h1 className="p-5 text-center">hey {name}, enter new password</h1>
+        <h1 className="heading-2">Hey {name}, enter new password</h1>
         {ResetPasswordForm()}
       </div>
     </Layout>

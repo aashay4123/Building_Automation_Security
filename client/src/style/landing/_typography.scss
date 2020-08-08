@@ -77,7 +77,15 @@
   font-weight: 700;
   text-transform: uppercase;
 }
-
+.heading-1 {
+  font-size: 4em;
+  color: $color-footer;
+}
+.heading-2 {
+  padding-top: 1em;
+  font-size: 3em;
+  color: $color-footer;
+}
 .paragraph {
   font-size: $default-font-size;
 

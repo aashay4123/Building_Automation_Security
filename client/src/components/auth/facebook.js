@@ -23,10 +23,7 @@ const Facebook = ({ informParent = (f) => f }) => {
         autoLoad={false}
         callback={responseFacebook}
         render={(renderProps) => (
-          <button
-            onClick={renderProps.onClick}
-            className="btn btn-primary btn-lg btn-block"
-          >
+          <button onClick={renderProps.onClick} className="btn btn--blue">
             <i className="fab fa-facebook pr-2"></i> Login with Facebook
           </button>
         )}

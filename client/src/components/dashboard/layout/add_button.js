@@ -12,7 +12,7 @@ const Button = (props) => {
     history.push(`/dashboard/addequipment/${roomId}`);
   };
 
-  let render = null;
+  let render = <div className="dashheader">&nbsp;</div>;
   if (houseId) {
     render = (
       <div className="dashheader">
