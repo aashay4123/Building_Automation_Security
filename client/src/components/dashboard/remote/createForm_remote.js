@@ -24,16 +24,21 @@ const createForm_remote = ({ initialValues, onSubmit, buttonText }) => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <Field label="Name" type="text" name="name" component={PortInput} />
             <Field
-              label="topic"
+              placeholder="Name"
+              type="text"
+              name="name"
+              component={PortInput}
+            />
+            <Field
+              placeholder="Topic"
               type="text"
               name="topic"
               component={PortInput}
             />
 
             <Field
-              label="company"
+              placeholder="Company"
               type="text"
               name="company"
               component={PortInput}

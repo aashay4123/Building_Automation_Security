@@ -24,9 +24,14 @@ const CreateForm_equipment = ({ initialValues, onSubmit, buttonText }) => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <Field label="name" type="text" name="name" component={PortInput} />
             <Field
-              label="topic"
+              placeholder="Name"
+              type="text"
+              name="name"
+              component={PortInput}
+            />
+            <Field
+              placeholder="Topic"
               type="text"
               name="topic"
               component={PortInput}

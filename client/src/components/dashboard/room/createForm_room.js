@@ -23,7 +23,13 @@ const CreateForm_room = ({ initialValues, onSubmit, buttonText }) => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <Field label="Name" type="text" name="name" component={PortInput} />
+            <Field
+              // label="Name"
+              type="text"
+              name="name"
+              component={PortInput}
+              placeholder="Name"
+            />
 
             <button
               type="submit"

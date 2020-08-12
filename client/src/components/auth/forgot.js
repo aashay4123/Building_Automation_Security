@@ -39,8 +39,8 @@ const Forgot = (props) => {
   );
   return (
     <Layout>
-      <div className="col-md-6 offset-med-3">
-        <h1 className="p-5 text-center">Forgot password</h1>
+      <div>
+        <h1 className="heading-2">Forgot password</h1>
         {passwordForgotForm()}
       </div>
     </Layout>

@@ -16,7 +16,7 @@ const Google = ({ informParent = (f) => f }) => {
       .catch((err) => {});
   };
   return (
-    <div className="pb-3">
+    <div>
       <GoogleLogin
         clientId={`${googleClient}`}
         onSuccess={responseGoogle}
@@ -28,7 +28,7 @@ const Google = ({ informParent = (f) => f }) => {
             disabled={renderProps.disabled}
             className="btn btn--green "
           >
-            <i className="fab fa-google pr-2"></i> Login with Google
+            <i></i> Login with Google
           </button>
         )}
       />

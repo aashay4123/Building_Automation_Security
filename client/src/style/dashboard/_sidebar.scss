@@ -22,7 +22,7 @@
   // }
   &__name {
     border: none;
-    background-color: $color-header;
+    background-color: inherit;
     color: white;
     &:active,
     &:focus {
@@ -36,7 +36,7 @@
 
   &__items {
     font-size: large;
-    background-color: $color-header;
+    background-color: inherit;
     border: none;
 
     margin-top: 1em;
@@ -46,7 +46,7 @@
   // }
 }
 .dropdown {
-  background: rgba($color: $color-header, $alpha: 0.361);
+  background: inherit;
   border: 1px solid $color-header;
   border-radius: 1px;
 
@@ -80,7 +80,7 @@
   &__toggle {
     border: none;
     font-size: 1.5em;
-    background: $color-header;
+    background: inherit;
     margin-left: 0.6em;
     color: white;
     &:active,
@@ -90,12 +90,11 @@
   }
   &__title {
     width: 100%;
-    color: $color-footer;
+    color: rgba($color-footer, 0.9);
   }
   &__button {
-    background: $color-header;
+    background: inherit;
     border: none;
-    // position: relative;
     width: 3em;
     height: 2em;
     &:active,

@@ -28,7 +28,6 @@ const Facebook = ({ informParent = (f) => f }) => {
           </button>
         )}
       />
-      ,
     </div>
   );
 };

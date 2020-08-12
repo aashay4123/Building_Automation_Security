@@ -24,6 +24,7 @@ exports.getHouseAll = (req, res) => {
 // @desc    1 house per user. No id required
 // @access  Private
 exports.getHouse = (req, res) => {
+  console.log("GH", req.user);
   House.findOne({ user_id: req.user._id })
     .populate("user_id", ["name", "email"])
     .select("-__v")

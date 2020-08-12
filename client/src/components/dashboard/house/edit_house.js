@@ -7,7 +7,7 @@ import Button from "../layout/add_button";
 import { connect } from "react-redux";
 
 const Edit_house = (props) => {
-  const { history } = props;
+  // const { history } = props;
   let INITIAL_VALUES = {
     name: props.houseName,
     flat: props.flat,
@@ -22,17 +22,17 @@ const Edit_house = (props) => {
     actions.setSubmitting(true);
   };
 
-  const createHouse = (e) => {
-    e.preventDefault();
-    history.push("/addhouse");
-  };
-  const deleteWarning = (e) => {
-    e.stopPropagation();
-    let isConf = window.confirm("Are you sure you want to delete ??");
-    if (isConf) {
-      props.onDeletehouse();
-    }
-  };
+  // const createHouse = (e) => {
+  //   e.preventDefault();
+  //   history.push("/addhouse");
+  // };
+  // const deleteWarning = (e) => {
+  //   e.stopPropagation();
+  //   let isConf = window.confirm("Are you sure you want to delete ??");
+  //   if (isConf) {
+  //     props.onDeletehouse();
+  //   }
+  // };
   return (
     <Layout header="Edit house">
       <Button houseId={props.houseId} history={props.history} />

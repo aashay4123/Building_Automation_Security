@@ -54,7 +54,7 @@ const Reset = (props) => {
 
   return (
     <Layout>
-      <div className="col-md-6 offset-med-3">
+      <div>
         <h1 className="heading-2">Hey {name}, enter new password</h1>
         {ResetPasswordForm()}
       </div>

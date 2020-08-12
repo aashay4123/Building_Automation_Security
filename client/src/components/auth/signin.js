@@ -80,7 +80,7 @@ const Signin = (props) => {
   );
   return (
     <Layout>
-      <div className="col-md-6 offset-med-3">
+      <div>
         {isAuth() ? <Redirect to="/" /> : null}
         <h1 className="heading-1">Signin</h1>
         {signinForm()}

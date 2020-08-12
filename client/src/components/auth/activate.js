@@ -32,7 +32,7 @@ const Activate = (props) => {
 
   return (
     <Layout>
-      <div className="col-md-6 offset-md-3">{activationLink()}</div>
+      <div>{activationLink()}</div>
     </Layout>
   );
 };

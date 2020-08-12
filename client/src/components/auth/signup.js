@@ -66,7 +66,7 @@ const Signup = (props) => {
   );
   return (
     <Layout>
-      <div className="col-md-6 offset-med-3">
+      <div>
         {isAuth() ? <Redirect to="/" /> : null}
         <h1 className="heading-1">Signup</h1>
         {signupForm()}
