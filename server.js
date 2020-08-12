@@ -29,17 +29,6 @@ mongoose
 
 mongoose.Promise = global.Promise;
 
-// Server static assets if in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.redirect("https://" + req.headers.host + req.url);
-  });
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
 app.use(cors());
 
 app.use(function (req, res, next) {
@@ -55,17 +44,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-// Server static assets if in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static(path.join(__dirname, "client/build")));
-  // app.get("*", (req, res) => {
-  //   res.redirect("https://" + req.headers.host + req.url);
-  // });
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
 app.use(morgan("dev"));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
@@ -79,6 +57,17 @@ app.use("/api/room", roomRoute);
 app.use("/api/house", houseRoute);
 // app.use("/api", buildingRoute);
 
+// Server static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // app.get("*", (req, res) => {
+  //   res.redirect("https://" + req.headers.host + req.url);
+  // });
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
