@@ -8,8 +8,7 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "generate-sw": "workbox inject:manifest",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "author": "Aashay Phirke",
   "license": "ISC",
@@ -36,6 +35,5 @@
     "react-google-login": "^5.1.21",
     "validator": "^13.1.1"
   },
-  "proxy": "http://localhost:8000",
   "devDependencies": {}
 }
