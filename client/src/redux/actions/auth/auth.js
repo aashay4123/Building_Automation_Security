@@ -61,8 +61,8 @@ export const signin = (email, password, informParent) => {
     axios
       .post("/signin", { email, password })
       .then((response) => {
-        dispatch(signinSuccess(response));
         informParent(response);
+        dispatch(signinSuccess(response));
       })
       .catch((error) => {
         dispatch(signinFailed(error));
