@@ -1,5 +1,5 @@
 import * as actionTypes from "../actionTypes";
-import axios from "axios";
+import { axiosInstance as axios } from "../../../utility";
 
 // Account Activation Actions
 export const updateNameToken = (name, token) => {
@@ -26,13 +26,6 @@ export const accountActivationSuccess = (toastMessage) => {
 
 export const accountActivation = (token) => {
   return (dispatch) => {
-    axios({
-      method: "POST",
-      url: `${URL}/user/${isAuth()._id}`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
     axios
       .post("/account_activate", { token })
       .then((response) => {
@@ -68,8 +61,8 @@ export const signin = (email, password, informParent) => {
     axios
       .post("/signin", { email, password })
       .then((response) => {
-        informParent(response);
         dispatch(signinSuccess(response));
+        informParent(response);
       })
       .catch((error) => {
         dispatch(signinFailed(error));
