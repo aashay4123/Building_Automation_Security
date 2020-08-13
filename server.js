@@ -31,21 +31,22 @@ mongoose.Promise = global.Promise;
 
 /**TODO:
  *  remove redundant headers in prod
+ * test https
  */
 // app.use(cors());
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-//   );
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "x-access-token, Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", req.headers.host);
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-access-token, Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.use(morgan("dev"));
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -62,7 +63,7 @@ if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static(path.join(__dirname, "client/build")));
 
-  //for https not tested
+  //for https
   app.get("*", (req, res) => {
     res.redirect("https://" + req.headers.host + req.url);
   });
