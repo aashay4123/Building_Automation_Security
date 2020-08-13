@@ -36,7 +36,7 @@ export const removeLocalStorage = (key, value) => {
   }
 };
 
-//store token and user data in storage
+//store  and user data in storage
 export const authenticate = (response, next) => {
   setcookie("token", response.data.token);
   setLocalStorage("user", response.data.user);
