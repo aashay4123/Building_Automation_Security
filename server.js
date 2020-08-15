@@ -37,7 +37,7 @@ app.use(cors());
 
 // app.use(function (req, res, next) {
 //   console.log(req.headers.host);
-//   res.header("Access-Control-Allow-Origin", req.headers.host.toString());
+//   res.header("Access-Control-Allow-Origin", `${req.headers.host}`);
 //   res.header(
 //     "Access-Control-Allow-Methods",
 //     "GET, POST, OPTIONS, PUT, PATCH, DELETE"

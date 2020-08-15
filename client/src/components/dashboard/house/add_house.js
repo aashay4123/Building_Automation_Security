@@ -13,7 +13,6 @@ const Addhouse = (props) => {
     address: "",
   };
   const saveHouse = (houseData, actions) => {
-    console.log("something?");
     actions.setSubmitting(false);
     props.onCreateHouse(houseData);
     actions.setSubmitting(true);

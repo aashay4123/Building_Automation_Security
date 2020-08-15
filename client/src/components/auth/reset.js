@@ -31,7 +31,6 @@ const Reset = (props) => {
     setValues({ ...values, buttonText: "Reseting password" });
     props.onReset(newPassword, token);
   };
-  // console.log(jwt.decode(token));
 
   const ResetPasswordForm = () => (
     <form className="form-dash">

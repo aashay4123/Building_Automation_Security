@@ -41,7 +41,6 @@ export const createHouseSuccess = (state, action) => {
  * maybe this is the cause of equipment not updated correctly
  */
 export const updateHouseState = (state, action) => {
-  console.log("update house state", action.house.room);
   const updateState = {
     houseId: action.house._id,
     houseName: action.house.name,

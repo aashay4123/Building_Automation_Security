@@ -19,7 +19,6 @@ class Button extends Component {
       onSetButtonState,
       equipment,
     } = this.props;
-
     this.setState({
       buttonState: !buttonState,
     });
@@ -30,9 +29,7 @@ class Button extends Component {
       power: buttonState,
     };
     onSetButtonState(buttonData, equipmentId, roomId);
-    mqtt.publish("@near/demo", buttonState.toString());
-
-    console.log("mqtt button", buttonState.toString());
+    mqtt.publish(equipment.topic, buttonState.toString());
   }
 
   render() {

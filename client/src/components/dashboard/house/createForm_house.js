@@ -13,7 +13,6 @@ const validateInputs = (values) => {
   return errors;
 };
 const CreateForm_house = ({ initialValues, onSubmit, buttonText }) => {
-  console.log("create house ", initialValues);
   return (
     <div className="form">
       <Formik

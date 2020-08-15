@@ -156,11 +156,11 @@
     }
   }
   &-wrong {
-    transform: translate(-3.32em, -0.1em);
+    transform: translate(-7.32em, -2.3em) scale(0.8);
     fill: red;
   }
   &-right {
-    transform: translate(-0.2em, -0.1em);
+    transform: translate(-10.2em, -2.1em) scale(0.8);
     fill: green;
   }
   &-bin2 {

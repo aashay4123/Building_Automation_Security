@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "../utils/Slider";
 import ButtonMqtt from "../utils/Button_mqtt";
+import { useSubscription } from "mqtt-react-hooks";
 
 const Dashcard = (props) => {
   const {
@@ -10,10 +11,16 @@ const Dashcard = (props) => {
     roomId,
     onSetButtonState,
     onSetIntensityState,
-    mqtt,
-    data,
   } = props;
-
+  const {
+    msgs,
+    status,
+    mqtt,
+    lastMessageOnTopic,
+    lastMessage,
+    topic,
+  } = useSubscription(equipment.topic);
+  console.log(msgs, status, mqtt, lastMessageOnTopic, lastMessage, topic);
   if (equipment) {
     return (
       <div className="dashcard">
@@ -52,13 +59,26 @@ const Dashcard = (props) => {
         <div className="dashcard__rooms">
           <p>{equipment.topic}</p>
           <svg className="user-nav__topic-svg">
-            <use
-              className="svg__use-right"
-              xlinkHref={
-                window.location.origin + "/images/sprite.svg#icon-checkmark"
-              }
-            ></use>
+            {status === "connected" ? (
+              <use
+                className="svg__use-right"
+                xlinkHref={
+                  window.location.origin + "/images/sprite.svg#icon-checkmark"
+                }
+              ></use>
+            ) : (
+              <use
+                className="svg__use-wrong"
+                xlinkHref={
+                  window.location.origin +
+                  "/images/sprite.svg#icon-cancel-circle"
+                }
+              ></use>
+            )}
           </svg>
+        </div>
+        <div className="dashcard__area">
+          <p> State</p>
         </div>
         <Slider
           roomId={roomId}
@@ -72,7 +92,7 @@ const Dashcard = (props) => {
           equipmentId={equipment._id}
           onSetButtonState={onSetButtonState}
           mqtt={mqtt}
-          data={data}
+          data={msgs}
           equipment={equipment}
         />
       </div>

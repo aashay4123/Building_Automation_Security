@@ -10,14 +10,12 @@ import "react-toastify/dist/ReactToastify.min.css";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={Store}>
-      <BrowserRouter>
-        <ToastContainer />
-        <Routes />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={Store}>
+    <BrowserRouter>
+      <ToastContainer />
+      <Routes />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 serviceWorker.unregister();

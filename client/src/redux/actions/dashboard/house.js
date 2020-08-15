@@ -81,7 +81,6 @@ export const createHouseSuccess = () => {
   };
 };
 export const createHouse = (houseData) => {
-  console.log("obviously not", houseData);
   return (dispatch) => {
     axios
       .post("/house", houseData)
@@ -106,7 +105,6 @@ export const deleteHouseSuccess = () => {
   };
 };
 export const deleteHouse = () => {
-  console.log("in");
   return (dispatch) => {
     axios
       .delete(`/house`)

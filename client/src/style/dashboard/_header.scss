@@ -2,17 +2,13 @@
   @extend %fontsize;
   grid-column: center-start / full-end;
   grid-row: 2;
-  display: grid;
-  grid-gap: 6em;
   align-items: start;
-  margin-top: 1.5em;
-  // background-color: #b1b9cc;
+  margin-top: 1.15em;
   background-image: linear-gradient(
     to bottom,
-    rgba($color-sidebar, 0.9),
+    rgba($color-sidebar, 0.85),
     rgba($color-footer, 0.9)
   );
-  background-size: cover;
 
   &__buttonbox {
     height: 75%;

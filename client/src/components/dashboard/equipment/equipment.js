@@ -5,16 +5,14 @@ import * as actions from "../../../redux/actions";
 import { connect } from "react-redux";
 import Button from "../layout/add_button";
 import Loading from "../../utils/loading";
-import _Dashcard from "./dashcard";
-import { subscribe } from "mqtt-react";
-
-const Dashcard = subscribe({ topic: "@near/demo" })(_Dashcard);
+import Dashcard from "./dashcard";
 
 const Equipment = (props) => {
   useEffect(() => {
     props.onGetHouse();
     // eslint-disable-next-line
   }, []);
+
   const { history, rooms, match } = props;
 
   const roomId = match.params.roomId;
