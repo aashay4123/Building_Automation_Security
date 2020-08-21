@@ -50,17 +50,20 @@ exports.updateEquipment = (req, res) => {
       const equipIndex = house.room[roomIndex].Equipments.map(
         (item) => item._id
       ).indexOf(req.params.equipment_id);
-
       if (roomIndex === -1 || equipIndex === -1) {
         return res.status(400).json({
           message: "could not update",
         });
       }
-
-      house.room[roomIndex].Equipments[equipIndex].name = req.body.name;
+      if (req.body.name)
+        house.room[roomIndex].Equipments[equipIndex].name = req.body.name;
+      if (req.body.topic)
+        house.room[roomIndex].Equipments[equipIndex].topic = req.body.topic;
+      // if (req.body.power == null)
       house.room[roomIndex].Equipments[equipIndex].power = req.body.power;
-      house.room[roomIndex].Equipments[equipIndex].intensity =
-        req.body.intensity;
+      if (req.body.intensity)
+        house.room[roomIndex].Equipments[equipIndex].intensity =
+          req.body.intensity;
 
       house
         .save()

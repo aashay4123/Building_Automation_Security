@@ -6,7 +6,7 @@ class Button extends Component {
     const { equipment } = this.props;
 
     this.state = {
-      buttonState: equipment.power,
+      buttonState: Boolean(equipment.power),
     };
   }
 
@@ -19,9 +19,10 @@ class Button extends Component {
       onSetButtonState,
       equipment,
     } = this.props;
-    this.setState({
-      buttonState: !buttonState,
-    });
+
+    this.setState((prevState) => ({
+      buttonState: !prevState.buttonState,
+    }));
     const buttonData = {
       name: equipment.name,
       topic: equipment.topic,
@@ -29,7 +30,7 @@ class Button extends Component {
       power: buttonState,
     };
     onSetButtonState(buttonData, equipmentId, roomId);
-    mqtt.publish(equipment.topic, buttonState.toString());
+    mqtt.publish(equipment.topic, buttonState?.toString());
   }
 
   render() {

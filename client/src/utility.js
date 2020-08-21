@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getcookie } from "./components/helper";
 const token = getcookie("token");
+
 export const updateObject = (oldObject, updatedProperties) => {
   return {
     ...oldObject,

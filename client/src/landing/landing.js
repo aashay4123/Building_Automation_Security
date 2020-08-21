@@ -50,6 +50,20 @@ const Landing = () => {
                 onClick={(e) => toggleCheckbox(e)}
                 className="navigation__link"
                 activeClass="active"
+                to="features"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={700}
+              >
+                <span>Features</span>
+              </Link>
+            </li>
+            <li className="navigation__item">
+              <Link
+                onClick={(e) => toggleCheckbox(e)}
+                className="navigation__link"
+                activeClass="active"
                 to="packages"
                 spy={true}
                 smooth={true}
@@ -172,7 +186,6 @@ const Landing = () => {
             </div>
           </div>
         </section>
-
         <section className="section-tours" id="packages">
           <div className="u-center-text u-margin-bottom-big">
             <h2 className="heading-secondary btn-color-white">Our Packages</h2>
@@ -286,6 +299,58 @@ const Landing = () => {
             </div>
           </div>
         </section>
+        <section className="section-features" id="features">
+          <div className="rownat">
+            <div className="col-1-of-4">
+              <div className="feature-box">
+                <i className="icon-basic-home feature-box__icon"></i>
+                <h3 className="heading-tertiary  u-margin-bottom-small">
+                  Smart Home
+                </h3>
+                <p className="feature-box__text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Facere dolor vero corrupti voluptas
+                </p>
+              </div>
+            </div>
+            <div className="col-1-of-4">
+              <div className="feature-box">
+                <i className="icon-basic-server-cloud feature-box__icon"></i>
+                <h3 className="heading-tertiary  u-margin-bottom-small">
+                  Cloud Server
+                </h3>
+                <p className="feature-box__text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Facere dolor vero corrupti voluptas
+                </p>
+              </div>
+            </div>
+            <div className="col-1-of-4">
+              <div className="feature-box">
+                <i className="icon-basic-smartphone feature-box__icon"></i>
+                <h3 className="heading-tertiary  u-margin-bottom-small">
+                  Mobile controlled
+                </h3>
+                <p className="feature-box__text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Facere dolor vero corrupti voluptas
+                </p>
+              </div>
+            </div>
+            <div className="col-1-of-4">
+              <div className="feature-box">
+                <i className="icon-basic-world feature-box__icon"></i>
+                <h3 className="heading-tertiary  u-margin-bottom-small">
+                  Explore
+                </h3>
+                <p className="feature-box__text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Facere dolor vero corrupti voluptas
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="section-book" id="contact">
           <div className="rownat">
@@ -364,50 +429,3 @@ const Landing = () => {
   );
 };
 export default Landing;
-
-// eslint-disable-next-line
-{
-  /* <section className="section-Login" id="login">
-            <div className="rownat">
-              <div className="book">
-                <div className="book__form">
-                  <form action="#" className="form-land">
-                    <div className="u-margin-bottom-medium">
-                      <h2 className="heading-secondary">Login</h2>
-                    </div>
-
-                    <div className="form-land__group">
-                      <input
-                        type="email"
-                        className="form-land__input"
-                        placeholder="Email address"
-                        id="email"
-                        required
-                      />
-                      <label htmlFor="email" className="form-land__label">
-                        Email address
-                      </label>
-                    </div>
-
-                    <div className="form-land__group">
-                      <input
-                        type="password"
-                        className="form-land__input"
-                        placeholder="Password"
-                        id="password"
-                        required
-                      />
-                      <label htmlFor="password" className="form-land__label">
-                        Password
-                      </label>
-                    </div>
-
-                    <div className="form-land__group">
-                      <button className="btn btn--green">Submit &rarr;</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </section> */
-}

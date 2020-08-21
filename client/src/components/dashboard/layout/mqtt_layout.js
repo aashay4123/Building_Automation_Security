@@ -17,6 +17,7 @@ const Layout = (props) => {
       brokerUrl={{
         host: "test.mosquitto.org",
         port: 8080,
+        clientId: "hello",
         // username: 'username',
         // password: 'password'
       }}
