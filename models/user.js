@@ -6,13 +6,13 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      required: true,
+      required: [true, "Please tell us your name!"],
       max: 32,
     },
     email: {
       type: String,
       trim: true,
-      required: true,
+      required: [true, "Please provide your email"],
       unique: true,
       lowercase: true,
     },
@@ -20,10 +20,15 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    photo: {
+      type: String,
+      default: "default.jpg",
+    },
     salt: String,
     role: {
       type: String,
-      default: "subscriber",
+      enum: ['subscriber', 'security', 'secretary', 'admin'],
+      default: 'subscriber'
     },
     resetPasswordLink: {
       data: String,

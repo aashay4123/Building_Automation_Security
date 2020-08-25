@@ -1,20 +1,42 @@
 const express = require("express");
 const morgan = require("morgan"); // used to print api endpoint
-const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
-require("dotenv").config();
 const path = require("path");
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const rateLimit = require("express-rate-limit");
+const cors = require("cors");
+const xss = require("xss-clean");
+const hpp = require("hpp");
+const compression = require("compression");
+require("dotenv").config();
+const port = process.env.PORT || 8000;
 
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
-// const buildingRoute = require("./routes/building/building");
 const roomRoute = require("./routes/building/room");
 const houseRoute = require("./routes/building/house");
-
-const app = express();
+// const buildingRoute = require("./routes/building/building");
 
 const mongo_url = process.env.MONGO_URL;
+const app = express();
+//required for heroku to send cookies while secure is sett to true
+// app.enable("trust proxy");
+
+const limiter = rateLimit({
+  max: 20,
+  windowMs: 10 * 60 * 1000,
+  message: "too many request from this IP try again after 10 mins!",
+});
+
+process.on('uncaughtException', err => {
+  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
 
 mongoose
   .connect(mongo_url, {
@@ -29,30 +51,27 @@ mongoose
 
 mongoose.Promise = global.Promise;
 
-/**TODO:
- *  remove redundant headers in prod
- * test https
- */
 app.use(cors());
+if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+app.use(bodyparser.urlencoded({ extended: true, limit: '10kb' }));
+app.use(bodyparser.json({ limit: "10kb" }));
 
-// app.use(function (req, res, next) {
-//   console.log(req.headers.host);
-//   res.header("Access-Control-Allow-Origin", `${req.headers.host}`);
-//   res.header(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-//   );
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "x-access-token, Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+//add and remove res headers
+app.use(helmet());
+// Data sanitization against NoSQL query injection
+app.use(mongoSanitize());
 
-app.use(morgan("dev"));
-app.use(bodyparser.urlencoded({ extended: false }));
-app.use(bodyparser.json());
+// Data sanitization against XSS
+app.use(xss());
 
+// Prevent parameter pollution
+app.use(hpp({
+    whitelist: []  //add parameters expected in query for aggregation
+  }));
+
+app.use(compression());
+
+app.use("/api", limiter);
 app.use("/api", authRoute);
 app.use("/api", userRoute);
 app.use("/api/room", roomRoute);
@@ -64,17 +83,33 @@ if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static(path.join(__dirname, "client/build")));
 
-  //for https
-  // app.get("*", (req, res) => {
-  //   res.redirect("https://" + req.headers.host + req.url);
-  // });
   //final application
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-const port = process.env.PORT || 8000;
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.use(globalErrorHandler);
 
 app.listen(port, () => {
   console.log(`Api is running on port ${port} - ${process.env.NODE_ENV}`);
+});
+
+process.on('unhandledRejection', err => {
+  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});
+
+//heroku specific
+process.on('SIGTERM', () => {
+  console.log('👋 SIGTERM RECEIVED. Shutting down gracefully');
+  server.close(() => {
+    console.log('💥 Process terminated!');
+  });
 });

@@ -15,11 +15,10 @@ const Layout = (props) => {
      */
     <Connector
       brokerUrl={{
-        host: "test.mosquitto.org",
+        host: "192.168.169.128",
         port: 8080,
-        clientId: "hello",
-        // username: 'username',
-        // password: 'password'
+        username: "aashay",
+        password: "aashay4123",
       }}
     >
       <Fragment>
