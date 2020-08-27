@@ -386,7 +386,18 @@ const Landing = () => {
                       Email address
                     </label>
                   </div>
-
+                  <div className="form-land__group">
+                    <input
+                      type="text"
+                      className="form-land__input"
+                      placeholder="description"
+                      id="description"
+                      required
+                    />
+                    <label htmlFor="description" className="form-land__label">
+                      description
+                    </label>
+                  </div>
                   <div className="form-land__group u-margin-bottom-medium">
                     <div className="form-land__radio-group">
                       <input

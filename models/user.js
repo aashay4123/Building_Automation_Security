@@ -19,20 +19,22 @@ const userSchema = new mongoose.Schema(
     hashed_password: {
       type: String,
       required: true,
+      select: false,
     },
     photo: {
       type: String,
       default: "default.jpg",
     },
-    salt: String,
+    salt: { type: String, select: false },
     role: {
       type: String,
-      enum: ['subscriber', 'security', 'secretary', 'admin'],
-      default: 'subscriber'
+      enum: ["subscriber", "security", "secretary", "admin"],
+      default: "subscriber",
     },
     resetPasswordLink: {
-      data: String,
+      type: String,
       default: "",
+      select: false,
     },
   },
   { timestamps: true }

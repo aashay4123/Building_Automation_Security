@@ -3,10 +3,10 @@ const house = require("../../controllers/building/house/house");
 const router = express.Router();
 const {
   requireSignin,
-  adminMiddleware,
+  restrictTo,
 } = require("../../controllers/auth/middleware");
 
-router.get("/all", requireSignin, adminMiddleware, house.getHouseAll);
+router.get("/all", requireSignin, restrictTo("admin"), house.getHouseAll);
 
 router.get("/", requireSignin, house.getHouse);
 

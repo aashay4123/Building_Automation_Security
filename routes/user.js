@@ -1,14 +1,29 @@
 const express = require("express");
 const router = express.Router();
 
-const { read, update } = require("../controllers/user");
-const {
-  requireSignin,
-  adminMiddleware,
-} = require("../controllers/auth/middleware");
+const userController = require("../controllers/user");
+const { requireSignin, restrictTo } = require("../controllers/auth/middleware");
 
-router.get("/user/:id", requireSignin, read);
-router.put("/user/update", requireSignin, update);
-router.put("/admin/update", requireSignin, adminMiddleware, update);
+router.use(requireSignin);
+
+router.patch("/updateMyPassword", userController.updatePassword);
+router.get("/me", userController.getMe, userController.getUser);
+router.patch(
+  "/updateMe",
+  userController.uploadUserPhoto,
+  userController.resizeUserPhoto,
+  userController.updateMe
+);
+router.delete("/deleteMe", userController.deleteMe);
+
+router.use(restrictTo("admin"));
+
+router.route("/").get(userController.getAllUsers);
+
+router
+  .route("/:id")
+  .get(userController.getUser)
+  .patch(userController.updateUser)
+  .delete(userController.deleteUser);
 
 module.exports = router;

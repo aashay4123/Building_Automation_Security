@@ -3,8 +3,8 @@ const morgan = require("morgan"); // used to print api endpoint
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const path = require("path");
-const AppError = require('./utils/appError');
-const globalErrorHandler = require('./controllers/errorController');
+const AppError = require("./utils/appError");
+const globalErrorHandler = require("./controllers/errorController");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const rateLimit = require("express-rate-limit");
@@ -23,7 +23,7 @@ const houseRoute = require("./routes/building/house");
 
 const mongo_url = process.env.MONGO_URL;
 const app = express();
-//required for heroku to send cookies while secure is sett to true
+//required for heroku to send cookies while secure is set to true
 // app.enable("trust proxy");
 
 const limiter = rateLimit({
@@ -32,8 +32,8 @@ const limiter = rateLimit({
   message: "too many request from this IP try again after 10 mins!",
 });
 
-process.on('uncaughtException', err => {
-  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+process.on("uncaughtException", (err) => {
+  console.log("UNCAUGHT EXCEPTION! 💥 Shutting down...");
   console.log(err.name, err.message);
   process.exit(1);
 });
@@ -53,7 +53,7 @@ mongoose.Promise = global.Promise;
 
 app.use(cors());
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
-app.use(bodyparser.urlencoded({ extended: true, limit: '10kb' }));
+app.use(bodyparser.urlencoded({ extended: true, limit: "10kb" }));
 app.use(bodyparser.json({ limit: "10kb" }));
 
 //add and remove res headers
@@ -65,15 +65,17 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Prevent parameter pollution
-app.use(hpp({
-    whitelist: []  //add parameters expected in query for aggregation
-  }));
+app.use(
+  hpp({
+    whitelist: [], //add parameters expected in query for aggregation
+  })
+);
 
 app.use(compression());
 
 app.use("/api", limiter);
 app.use("/api", authRoute);
-app.use("/api", userRoute);
+app.use("/api/user", userRoute);
 app.use("/api/room", roomRoute);
 app.use("/api/house", houseRoute);
 // app.use("/api", buildingRoute);
@@ -88,7 +90,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-app.all('*', (req, res, next) => {
+app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
@@ -98,8 +100,8 @@ app.listen(port, () => {
   console.log(`Api is running on port ${port} - ${process.env.NODE_ENV}`);
 });
 
-process.on('unhandledRejection', err => {
-  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+process.on("unhandledRejection", (err) => {
+  console.log("UNHANDLED REJECTION! 💥 Shutting down...");
   console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
@@ -107,9 +109,9 @@ process.on('unhandledRejection', err => {
 });
 
 //heroku specific
-process.on('SIGTERM', () => {
-  console.log('👋 SIGTERM RECEIVED. Shutting down gracefully');
+process.on("SIGTERM", () => {
+  console.log("👋 SIGTERM RECEIVED. Shutting down gracefully");
   server.close(() => {
-    console.log('💥 Process terminated!');
+    console.log("💥 Process terminated!");
   });
 });
