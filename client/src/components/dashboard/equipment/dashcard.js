@@ -92,7 +92,6 @@ const Dashcard = (props) => {
           equipmentId={equipment._id}
           onSetButtonState={onSetButtonState}
           mqtt={mqtt}
-          data={msgs}
           equipment={equipment}
         />
       </div>

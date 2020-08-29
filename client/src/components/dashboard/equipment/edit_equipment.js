@@ -73,4 +73,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withAuth("subscriber")(Edit_equip));
+)(withAuth()(Edit_equip));

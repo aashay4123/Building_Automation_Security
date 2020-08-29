@@ -70,7 +70,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withAuth("subscriber")(Remote));
+export default connect(mapStateToProps, mapDispatchToProps)(withAuth()(Remote));

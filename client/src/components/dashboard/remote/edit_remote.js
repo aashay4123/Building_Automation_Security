@@ -75,4 +75,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withAuth("subscriber")(Edit_remote));
+)(withAuth()(Edit_remote));

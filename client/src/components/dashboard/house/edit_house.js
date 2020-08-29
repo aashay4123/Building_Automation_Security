@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CreateFormRoom from "./createForm_house";
 import Layout from "../layout/layout";
 import withAuth from "../..//hoc/withAuth";
@@ -8,6 +8,12 @@ import { connect } from "react-redux";
 
 const Edit_house = (props) => {
   // const { history } = props;
+  useEffect(() => {
+    if (!(props.rooms && props.rooms.length > 0)) {
+      props.onGetHouse();
+    }
+    // eslint-disable-next-line
+  }, []);
   let INITIAL_VALUES = {
     name: props.houseName,
     flat: props.flat,
@@ -18,8 +24,8 @@ const Edit_house = (props) => {
   const updateHouse = (houseData, actions) => {
     actions.setSubmitting(false);
     props.onCreateHouse(houseData);
-    window.location.reload();
     actions.setSubmitting(true);
+    window.location.reload();
   };
 
   // const createHouse = (e) => {
@@ -67,10 +73,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onDeletehouse: () => dispatch(actions.deleteHouse()),
     onCreateHouse: (houseData) => dispatch(actions.createHouse(houseData)),
+    onGetHouse: () => dispatch(actions.getHouse()),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withAuth("subscriber")(Edit_house));
+)(withAuth()(Edit_house));

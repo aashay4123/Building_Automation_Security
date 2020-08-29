@@ -8,7 +8,9 @@ import Loading from "../../utils/loading";
 const Room = (props) => {
   const options = ["Equipment", "Remote"];
   useEffect(() => {
-    props.onGetHouse();
+    if (!(props.rooms && props.rooms.length > 0)) {
+      props.onGetHouse();
+    }
     // eslint-disable-next-line
   }, []);
   const sidebarName = (e) => {
@@ -71,7 +73,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withAuth("subscriber")(Room));
+export default connect(mapStateToProps, mapDispatchToProps)(withAuth()(Room));

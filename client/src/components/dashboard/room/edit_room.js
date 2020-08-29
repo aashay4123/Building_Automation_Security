@@ -61,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withAuth("subscriber")(Edit_room));
+)(withAuth()(Edit_room));

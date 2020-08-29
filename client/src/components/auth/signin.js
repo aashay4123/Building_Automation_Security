@@ -17,6 +17,7 @@ const Signin = (props) => {
   const { email, password, buttonText } = values;
 
   const informParent = (response) => {
+    console.log(response);
     authenticate(response, () => {
       setValues({
         ...values,

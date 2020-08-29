@@ -11,6 +11,8 @@ const Header = ({ match, history }) => {
       return { color: "#3f435e", textDecoration: "none" };
     }
   };
+  console.log(isAuth());
+
   return (
     <Fragment>
       <header className="header">
@@ -29,22 +31,17 @@ const Header = ({ match, history }) => {
           {!isAuth() && (
             <div className="user-nav__last">
               <li className=" user-nav__user-head-link">
-                <Link to="/house" className="" style={isActive("/house")}>
-                  Dashboard
-                </Link>
-              </li>
-              <li className=" user-nav__user-head-link">
                 <Link to="/signin" className="" style={isActive("/signin")}>
                   signin
                 </Link>
               </li>
             </div>
           )}
-          {isAuth() && isAuth().role === "admin" && (
+          {isAuth() && (
             <div className="user-nav__last">
               <li className=" user-nav__user-head-link">
                 <Link to="/house" className="" style={isActive("/house")}>
-                  Dashboard
+                  My Home
                 </Link>
               </li>
               <button className="user-nav__icon-box">
@@ -58,55 +55,11 @@ const Header = ({ match, history }) => {
                 </svg>
                 <span className="user-nav__notification">3</span>
               </button>
-
               <div className="user-nav__user">
                 <img
-                  src={window.location.origin + "/images/user.jpg"}
-                  alt="User "
-                  className="user-nav__user-photo"
-                ></img>
-                <li className="user-nav__user-head-link">
-                  <Link to="/profile" className="" style={isActive("/profile")}>
-                    {isAuth().name}
-                  </Link>
-                </li>
-              </div>
-              <li className="">
-                <span
-                  className=" user-nav__user-head-link"
-                  onClick={() => {
-                    signout(() => {
-                      history.push("/");
-                    });
-                  }}
-                >
-                  signout
-                </span>
-              </li>
-            </div>
-          )}
-          {isAuth() && isAuth().role === "subscriber" && (
-            <div className="user-nav__last">
-              <li className=" user-nav__user-head-link">
-                <Link to="/house" className="" style={isActive("/house")}>
-                  Dashboard
-                </Link>
-              </li>
-              <button className="user-nav__icon-box">
-                <svg className="user-nav__notification-svg">
-                  <use
-                    className="svg__use-bell"
-                    xlinkHref={
-                      window.location.origin + "/images/sprite.svg#icon-bell"
-                    }
-                  ></use>
-                </svg>
-                <span className="user-nav__notification">3</span>
-              </button>
-
-              <div className="user-nav__user">
-                <img
-                  src={window.location.origin + "/images/user.jpg"}
+                  src={
+                    window.location.origin + `/images/users/${isAuth().photo}`
+                  }
                   alt="User "
                   className="user-nav__user-photo"
                 />
@@ -136,3 +89,49 @@ const Header = ({ match, history }) => {
   );
 };
 export default Header;
+
+// {isAuth() && isAuth().role === "admin" && (
+//   <div className="user-nav__last">
+//     <li className=" user-nav__user-head-link">
+//       <Link to="/house" className="" style={isActive("/house")}>
+//         Dashboard
+//       </Link>
+//     </li>
+//     <button className="user-nav__icon-box">
+//       <svg className="user-nav__notification-svg">
+//         <use
+//           className="svg__use-bell"
+//           xlinkHref={
+//             window.location.origin + "/images/sprite.svg#icon-bell"
+//           }
+//         ></use>
+//       </svg>
+//       <span className="user-nav__notification">3</span>
+//     </button>
+
+//     <div className="user-nav__user">
+//       <img
+//         src={window.location.origin + "/images/user.jpg"}
+//         alt="User "
+//         className="user-nav__user-photo"
+//       ></img>
+//       <li className="user-nav__user-head-link">
+//         <Link to="/profile" className="" style={isActive("/profile")}>
+//           {isAuth().name}
+//         </Link>
+//       </li>
+//     </div>
+//     <li className="">
+//       <span
+//         className=" user-nav__user-head-link"
+//         onClick={() => {
+//           signout(() => {
+//             history.push("/");
+//           });
+//         }}
+//       >
+//         signout
+//       </span>
+//     </li>
+//   </div>
+// )}

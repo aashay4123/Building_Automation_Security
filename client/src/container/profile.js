@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./layout/layout";
 import axios from "axios";
-import { isAuth, getcookie, signout, updateUser } from "../components/helper";
+import { getcookie, signout, updateUser } from "../components/helper";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import withAuth from "../components/hoc/withAuth";
-
-const URL = process.env.REACT_APP_API;
-
+import ImageUploader from "../components/utils/ImageUploader";
 const Private = ({ history }) => {
   const [values, setValues] = useState({
-    role: "",
     name: "",
     email: "",
     password: "",
@@ -27,17 +24,17 @@ const Private = ({ history }) => {
   const loadProfile = () => {
     axios({
       method: "GET",
-      url: `${URL}/user/${isAuth()._id}`,
+      url: `/api/user/me`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => {
-        const { role, name, email } = response.data;
+        const { role, name, email } = response.data.data;
         setValues({ ...values, role, name, email });
       })
       .catch((error) => {
-        if (error.response.status === 401) {
+        if (error.status === 401) {
           signout(() => {
             history.push("/signin");
           });
@@ -45,7 +42,7 @@ const Private = ({ history }) => {
       });
   };
 
-  const { role, name, email, password, buttonText } = values;
+  const { name, email, password, buttonText } = values;
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -54,37 +51,49 @@ const Private = ({ history }) => {
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, buttonText: "Submitting" });
-    axios({
-      method: "PUT",
-      url: `api/user/update`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      data: { name, password },
-    })
-      .then((response) => {
-        updateUser(response, () => {
-          setValues({ ...values, buttonText: "Submit again" });
-          toast.success("Profile updated successfully");
-        });
+    if (password !== "") {
+      axios({
+        method: "PATCH",
+        url: `api/user/updateMyPassword`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: { password },
       })
-      .catch((error) => {
-        setValues({ ...values, buttonText: "Submit" });
-        toast.error(error);
-      });
+        .then((_) => {
+          setValues({ ...values, buttonText: "Submit again" });
+          toast.success("password updated successfully");
+        })
+        .catch((error) => {
+          setValues({ ...values, buttonText: "Submit" });
+          toast.error(error);
+        });
+    } else {
+      axios({
+        method: "PATCH",
+        url: `api/user/updateMe`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: { name },
+      })
+        .then((response) => {
+          console.log(response);
+
+          updateUser(response.data.user, () => {
+            setValues({ ...values, buttonText: "Submit again" });
+            toast.success("Profile updated successfully");
+          });
+        })
+        .catch((error) => {
+          setValues({ ...values, buttonText: "Submit" });
+          toast.error(error);
+        });
+    }
   };
 
   const updateForm = () => (
     <form className="form-dash">
-      <div className="form-land__group">
-        <input
-          defaultValue={role}
-          type="text"
-          className="form-land__input"
-          placeholder="Role"
-          disabled
-        />
-      </div>
       <div className="form-land__group">
         <input
           onChange={handleChange("name")}
@@ -110,12 +119,12 @@ const Private = ({ history }) => {
         <input
           onChange={handleChange("password")}
           value={password}
-          type="text"
+          type="password"
           className="form-land__input"
-          placeholder="password"
+          placeholder="update password"
         />
       </div>
-
+      {<ImageUploader />}
       <div>
         <button className="btn btn--blue btn--pad" onClick={clickSubmit}>
           {buttonText}
@@ -135,4 +144,4 @@ const Private = ({ history }) => {
   );
 };
 
-export default withAuth("subscriber")(Private);
+export default withAuth()(Private);

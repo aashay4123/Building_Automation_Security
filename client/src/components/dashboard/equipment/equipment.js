@@ -9,7 +9,10 @@ import Dashcard from "./dashcard";
 
 const Equipment = (props) => {
   useEffect(() => {
-    props.onGetHouse();
+    console.log();
+    if (!(props.rooms && props.rooms.length > 0)) {
+      props.onGetHouse();
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -85,4 +88,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withAuth("subscriber")(Equipment));
+)(withAuth()(Equipment));

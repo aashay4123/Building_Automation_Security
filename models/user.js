@@ -19,13 +19,13 @@ const userSchema = new mongoose.Schema(
     hashed_password: {
       type: String,
       required: true,
-      select: false,
+      // select: false,
     },
     photo: {
       type: String,
       default: "default.jpg",
     },
-    salt: { type: String, select: false },
+    salt: { type: String },
     role: {
       type: String,
       enum: ["subscriber", "security", "secretary", "admin"],
@@ -64,6 +64,7 @@ userSchema.methods = {
         .update(password)
         .digest("hex");
     } catch (err) {
+      console.log(err);
       return "";
     }
   },

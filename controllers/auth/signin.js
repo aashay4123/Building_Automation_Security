@@ -20,11 +20,11 @@ exports.signin = (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "10h",
     });
-    const { _id, name, email, role } = user;
+    const { _id, name, email, role, photo } = user;
 
     return res.json({
       token,
-      user: { _id, name, email, role },
+      user: { _id, name, email, role, photo },
     });
   });
 };

@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withAuth("subscriber")(AddEquipment));
+)(withAuth()(AddEquipment));
