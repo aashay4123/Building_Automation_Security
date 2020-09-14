@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { axiosInstanceAuth } from "../../utility";
 class ImageUploader extends Component {
   constructor() {
     super();
@@ -71,7 +71,6 @@ class ImageUploader extends Component {
   handleAddImage(e) {
     e.preventDefault();
     let file = this.refs.image.files[0];
-
     // Validate file is of type Image
     let fileType = this.refs.image.files[0].type.split("/")[0];
     if (fileType !== "image") {
@@ -98,11 +97,28 @@ class ImageUploader extends Component {
   **/
   handleUploadImage(e) {
     e.preventDefault();
-    if (this.refs.image.files[0]) {
-      console.log("Uploading Image " + this.refs.image.files[0].name + "");
-      /**
-           Handle image Upload
-        **/
+    const file = this.refs.image.files[0];
+    if (file) {
+      console.log("Uploading Image " + file.name + "");
+      // Create an object of formData
+      const formData = new FormData();
+      console.log(this.state.file);
+      // Update the formData object
+      formData.append("photo", this.state.file);
+
+      // Details of the uploaded file
+      console.log(formData);
+
+      // Request made to the backend api
+      // Send formData object
+      axiosInstanceAuth
+        .patch("http://localhost:8000/api/user/updateMe", formData)
+        .then((res) => {
+          console.log(res);
+        })
+        .then((err) => {
+          console.log(err);
+        });
     }
   }
   handleCancelUpload(e) {

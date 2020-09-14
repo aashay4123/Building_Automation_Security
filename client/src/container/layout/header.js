@@ -11,7 +11,6 @@ const Header = ({ match, history }) => {
       return { color: "#3f435e", textDecoration: "none" };
     }
   };
-  console.log(isAuth());
 
   return (
     <Fragment>

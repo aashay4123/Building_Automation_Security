@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footerhot">
-      <ul className="navi">
+      {/* <ul className="navi">
         <li className="navi__item">
           <Link to="/products" className="navi__link">
             find your dream home
@@ -31,10 +31,8 @@ const Footer = () => {
             work with us
           </Link>
         </li>
-      </ul>
-      <p className="copy">
-        This Webpage was created by Building Security and Automation.
-      </p>
+      </ul> */}
+      <p className="copy">Building Security and Automation.</p>
     </footer>
   );
 };

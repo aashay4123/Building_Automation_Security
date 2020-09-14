@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import withAuth from "../components/hoc/withAuth";
 import ImageUploader from "../components/utils/ImageUploader";
+
 const Private = ({ history }) => {
   const [values, setValues] = useState({
     name: "",

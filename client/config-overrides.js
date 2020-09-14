@@ -7,7 +7,7 @@ module.exports = (webpack, ...args) => {
     addWebpackPlugin(
       new InjectManifest({
         swSrc: "./src/custom-serviceWorker.js",
-        swDest: "./service-worker.js",
+        swDest: "./public/service-worker.js",
       })
     )
   )(webpack, ...args);

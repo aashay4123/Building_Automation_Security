@@ -15,8 +15,8 @@ const Layout = (props) => {
      */
     <Connector
       brokerUrl={{
-        host: "192.168.169.134",
-        // host: "54.241.39.231",
+        // host: "192.168.169.134",
+        host: "54.241.39.231",
         port: 8080,
         username: "aashay",
         password: "aashay4123",
