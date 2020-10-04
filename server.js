@@ -28,7 +28,7 @@ const app = express();
 
 const limiter = rateLimit({
   max: 20,
-  windowMs: 10 * 60 * 1000,
+  windowMs: 2 * 60 * 1000,
   message: "too many request from this IP try again after 10 mins!",
 });
 
@@ -68,7 +68,7 @@ app.use(xss());
 app.use(
   hpp({
     whitelist: [], //add parameters expected in query for aggregation
-  })
+  }),
 );
 
 app.use(compression());

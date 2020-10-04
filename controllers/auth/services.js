@@ -1,4 +1,5 @@
 const { OAuth2Client } = require("google-auth-library");
+const House = require("../../models/house");
 const fetch = require("node-fetch");
 const User = require("../../models/user");
 
@@ -125,3 +126,5 @@ exports.facebookLogin = (req, res) => {
       });
     });
 };
+
+// exports.nodeRed = (req, res) => {};

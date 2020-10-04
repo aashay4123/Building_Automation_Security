@@ -14,7 +14,11 @@ const { signin } = require("../controllers/auth/signin");
 const { forgotPassword } = require("../controllers/auth/forgot");
 const { resetPassword } = require("../controllers/auth/reset");
 
-const { googleLogin, facebookLogin } = require("../controllers/auth/services");
+const {
+  googleLogin,
+  facebookLogin,
+  // nodeRed,
+} = require("../controllers/auth/services");
 
 router.post("/signup", userSignupValidator, runValidation, signup);
 router.post("/account_activate", accountActivation);
@@ -35,4 +39,5 @@ router.put(
 );
 router.post("/google-login", googleLogin);
 router.post("/facebook-login", facebookLogin);
+// router.post("/node-red", nodeRed);
 module.exports = router;

@@ -12,15 +12,8 @@ const Dashcard = (props) => {
     onSetButtonState,
     onSetIntensityState,
   } = props;
-  const {
-    msgs,
-    status,
-    mqtt,
-    lastMessageOnTopic,
-    lastMessage,
-    topic,
-  } = useSubscription(equipment.topic);
-  console.log(msgs, status, mqtt, lastMessageOnTopic, lastMessage, topic);
+  const { status, mqtt, topic } = useSubscription(equipment.topic);
+  console.log(status, mqtt, topic);
   if (equipment) {
     return (
       <div className="dashcard">

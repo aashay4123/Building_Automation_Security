@@ -18,7 +18,7 @@ exports.signin = (req, res) => {
     }
     // generate a token and send to client
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "10h",
+      expiresIn: "1020h",
     });
     const { _id, name, email, role, photo } = user;
 

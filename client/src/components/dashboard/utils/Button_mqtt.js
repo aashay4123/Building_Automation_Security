@@ -23,6 +23,7 @@ class Button extends Component {
     this.setState((prevState) => ({
       buttonState: !prevState.buttonState,
     }));
+
     const buttonData = {
       name: equipment.name,
       topic: equipment.topic,

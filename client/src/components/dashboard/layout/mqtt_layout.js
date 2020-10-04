@@ -16,10 +16,10 @@ const Layout = (props) => {
     <Connector
       brokerUrl={{
         // host: "192.168.169.134",
-        host: "54.241.39.231",
+        host: process.env.MQTT_HOST,
         port: 8080,
-        username: "aashay",
-        password: "aashay4123",
+        // username: "aashay",
+        // password: "aashay4123",
       }}
     >
       <Fragment>
