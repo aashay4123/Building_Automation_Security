@@ -1,3 +1,4 @@
 /node_modules
 .env
 /improments.txt
+client/node_modules
